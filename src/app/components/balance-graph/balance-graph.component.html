@@ -1,0 +1,19 @@
+<div class="my-graph ">
+   <div class="table ">
+      <div class="tab-month" *ngFor="let item of mapFatturaAltezza.keys(); let i = index">
+         <div class="month"><span style="padding-left:10px;">{{month[i]}}</span></div>
+         <a draggable="false" href="javascript:void(0)" class="value" (click)="selectMese(item,month[i])" (mousedown)="firstSelection=item.month"
+            (mouseup)="secondSelection=item.month;compute()">
+            <div class="level" [ngClass]="{'selected-level': isSelected(item)}" [style.height.%]="getHeight(item)">
+
+            </div>
+            <div class="testo"><span style="color:#6F7E86">{{item.documenti}} doc.</span> <br><span style="color: #00875A;">{{item.importo}}€</span></div>
+         </a>
+      </div>
+
+
+   </div>
+   <p *ngFor="let fatturaSelected of selectedFatture">Fattura di {{month[fatturaSelected.month-1]}}<br>Documenti:{{ fatturaSelected.documenti}}<br>
+      Importo {{fatturaSelected.importo}}</p>
+
+</div>
